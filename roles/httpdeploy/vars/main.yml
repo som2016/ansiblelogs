@@ -1,0 +1,2 @@
+# vars file for httpdeploy
+dest_path: /var/www/html

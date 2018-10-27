@@ -1,0 +1,9 @@
+# tasks file for tomcatdeploy
+  - name: install Tomcat
+    yum: name=tomcat state=latest
+  - name: Start tomcat Service
+    service: name=tomcat state=restarted
+  - name: Deploy war File
+    copy: src=sample.war dest={{dest_path}}
+    notify: restart tomcat
+

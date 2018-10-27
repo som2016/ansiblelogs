@@ -1,0 +1,3 @@
+# vars file for tomcatdeploy
+dest_path: /usr/share/tomcat/webapps
+

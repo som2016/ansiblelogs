@@ -1,0 +1,10 @@
+---
+- hosts: webservers
+  become: true
+  become_user: root
+  tasks:
+  - name: transfer the Script file first
+    copy: src=ansibletest.sh dest=/tmp/
+  - name: execute the sh file
+    command: sh /tmp/ansibletest.sh
+ 

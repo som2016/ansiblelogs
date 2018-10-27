@@ -1,0 +1,9 @@
+# tasks file for httpdeploy
+  - name: install htttp
+    yum: name=httpd state=latest
+  - name: start http service
+    service: name=httpd state=started
+  - name: deploy html file
+    copy: src=index.html dest={{dest_path}}
+    notify: restart httpd
+

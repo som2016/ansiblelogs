@@ -1,0 +1,19 @@
+---
+- hosts: webservers
+  become: true
+  become_user: root
+  vars:
+   src_path: /etc/ansible/
+   dest_path: /usr/share/tomcat/webapps
+  tasks:
+  - name: install Tomcat
+    yum: name=tomcat state=latest
+  - name: Start tomcat Service
+    service: name=tomcat state=restarted
+  - name: Deploy war File
+    copy: src={{src_path}}/sample.war dest={{dest_path}}
+    notify: restart tomcat
+
+  handlers:
+  - name: restart tomcat
+    service: name=tomcat state=restarted
